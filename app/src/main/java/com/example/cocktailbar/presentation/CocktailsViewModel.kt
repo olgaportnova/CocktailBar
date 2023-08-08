@@ -2,6 +2,7 @@ package com.example.cocktailbar.presentation
 
 import android.os.Handler
 import android.os.Looper
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,27 +20,6 @@ class CocktailsViewModel(
 
     fun getFavListStatusLiveData(): LiveData<State> = favListStatusLiveData
 
-
-    private var cocktails = ArrayList<Cocktail>()
-    private val handler = Handler(Looper.getMainLooper())
-
-
-    private val searchRunnable = Runnable {
-            getFavList()
-            showFavList()
-    }
-
-    fun onDestroy() {
-        handler.removeCallbacks(searchRunnable)
-    }
-
-    fun onResume() {
-        getFavList()
-        if (cocktails.isEmpty()){
-            showFavList()
-        }
-    }
-
     fun getFavList():ArrayList<Cocktail> {
         return  cocktaiInteractor.getFavList()
     }
@@ -55,14 +35,13 @@ class CocktailsViewModel(
     fun addNewCocktailToFav(cocktail: Cocktail) {
         cocktaiInteractor.addCocktailsToFav(cocktail)
     }
-//
-    fun openDetails(cocktail: Cocktail) {
-     //   internalNavigationInteractor.openTrack(track)
-    }
-
 
 
 }
+
+
+
+
 
 
 

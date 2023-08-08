@@ -1,17 +1,15 @@
 package com.example.cocktailbar.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cocktailbar.R
-import com.example.cocktailbar.databinding.FragmentAddNewCocktailBinding
 import com.example.cocktailbar.databinding.FragmentHomeCocktailsListBinding
-import com.example.cocktailbar.databinding.FragmentHomeEmptyListBinding
 import com.example.cocktailbar.domain.model.Cocktail
 import com.example.cocktailbar.domain.model.State
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,30 +17,16 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeCocktailsListFragment : Fragment(), CocktailsAdapter.Listener {
 
-    private lateinit var rv: RecyclerView
-    private lateinit var cocktailsAdapter: CocktailsAdapter
-    private var favList = mutableListOf<Cocktail>()
     private val cocktailsViewModel: CocktailsViewModel by viewModel()
-
-
-    private var _binding: FragmentHomeEmptyListBinding? = null
+    private var _binding: FragmentHomeCocktailsListBinding? = null
     private val binding get() = _binding!!
-
-
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeEmptyListBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeCocktailsListBinding.inflate(inflater, container, false)
         return binding.root
 
 
@@ -58,22 +42,50 @@ class HomeCocktailsListFragment : Fragment(), CocktailsAdapter.Listener {
         init()
 
         binding.btAddNew.setOnClickListener {
-            activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.replace(R.id.container_view, AddNewCocktailFragment())
-                ?.addToBackStack(null)
-                ?.commit();
+            toAddFragment()
         }
-
-
+        binding.btAddNewNotEmpty.setOnClickListener {
+            toAddFragment()
+        }
 
     }
 
     private fun init() {
-        binding.rvCocktailsList.layoutManager = GridLayoutManager(requireContext(),2)
+        binding.rvCocktailsList.layoutManager = GridLayoutManager(requireContext(), 2)
         cocktailsViewModel.showFavList()
     }
 
+    override fun onClick(cocktail: Cocktail) {
+        toDetailsFragment(cocktail)
+
+    }
+
+
+    // navigation
+    private fun toAddFragment(){
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.replace(R.id.container_view, AddNewCocktailFragment())
+            ?.addToBackStack(null)
+            ?.commit();
+    }
+
+    private fun toDetailsFragment(cocktail: Cocktail) {
+
+        fun getDetailsFragment(cocktail: Cocktail) = DetailsFragment().apply {
+            arguments = bundleOf("NAME_KEY" to cocktail)
+        }
+        activity?.supportFragmentManager
+            ?.beginTransaction()
+            ?.replace(R.id.container_view, getDetailsFragment(cocktail))
+            ?.addToBackStack(null)
+            ?.commit()
+
+    }
+
+
+
+    // updating UI based on List empty or not
     fun updatedViewBasedOnStatus(updatedStatus: State) {
         when {
             updatedStatus.favList.isEmpty() -> showEmpty()
@@ -83,35 +95,25 @@ class HomeCocktailsListFragment : Fragment(), CocktailsAdapter.Listener {
     }
 
     fun showEmpty() {
-
         binding.apply {
             rvCocktailsList.visibility = View.GONE
-            tvHeaderNotEmpty.visibility=View.GONE
-
-
+            tvHeaderNotEmpty.visibility = View.GONE
+            btAddNewNotEmpty.visibility = View.GONE
         }
-
-
-
     }
 
     fun showContent(favList: List<Cocktail>) {
         binding.apply {
-            rvCocktailsList.adapter = CocktailsAdapter(ArrayList(favList), this@HomeCocktailsListFragment )
+            rvCocktailsList.adapter =
+                CocktailsAdapter(ArrayList(favList), this@HomeCocktailsListFragment)
             rvCocktailsList.visibility = View.VISIBLE
-            tvHeaderNotEmpty.visibility=View.VISIBLE
-            btAddNew.visibility=View.GONE
-            tvHintText.visibility=View.GONE
-            imageCover.visibility=View.GONE
-            tvHeaderText.visibility=View.GONE
-            arrowMain.visibility=View.GONE
-
-
+            tvHeaderNotEmpty.visibility = View.VISIBLE
+            btAddNew.visibility = View.GONE
+            tvHintText.visibility = View.GONE
+            imageCover.visibility = View.GONE
+            tvHeaderText.visibility = View.GONE
+            arrowMain.visibility = View.GONE
         }
-    }
-
-    override fun onClick(cocktail: Cocktail) {
-        cocktailsViewModel.openDetails(cocktail)
     }
 
 

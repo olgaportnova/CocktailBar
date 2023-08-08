@@ -7,4 +7,24 @@
     // main page
     <string name="my_cocktails">My cocktails</string>
     <string name="hint_add">Add your first \n cocktail here</string>
+
+
+    // add new cocktail
+    <string name="enter_name">Enter cocktail name</string>
+    <string name="enter_ing">Enter at least one ingredient</string>
+    <string name="cocktail_name">Cocktail name</string>
+    <string name="title">Title</string>
+    <string name="add_title">Add title</string>
+    <string name="description">Description</string>
+    <string name="optional_field">Optional field</string>
+    <string name="recipe">Recipe</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="add_ingredients_one_by_one">Add ingredients one by one</string>
+
+    //btms
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+
 </resources>

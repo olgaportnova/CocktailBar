@@ -1,5 +1,6 @@
 package com.example.cocktailbar.domain.model
 
+import android.os.Parcelable
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*

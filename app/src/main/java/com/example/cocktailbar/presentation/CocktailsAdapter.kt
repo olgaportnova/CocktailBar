@@ -24,7 +24,7 @@ class CocktailsAdapter(var cocktails: ArrayList<Cocktail>, var listener: Listene
         fun bind(cocktail: Cocktail, listener: Listener) = with(binding) {
             name.text = cocktail.name
             Glide.with(itemView).load(cocktail.image).transform(RoundedCorners(cornerRadius))
-                .placeholder(R.drawable.placeholder).into(imageMain)
+                .placeholder(R.drawable.ic_main_empty).into(imageMain)
             itemView.setOnClickListener {
                 listener.onClick(cocktail)
             }

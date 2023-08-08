@@ -43,12 +43,13 @@ class CocktailsInteractorImpl (private val cocktailRepository: CocktailsReposito
             var currentFavArrayList = currentFavString?.let { createFavListFromJson(it) }
             var currentHistoryArray = createFavList1FromJson(currentFavString) // создаем из строки список треков array
             if (currentFavArrayList?.size !== 0) { // если история поиска не пустая
+                currentFavArrayList!!.add(cocktail)
                 updateFavList(currentFavArrayList!!)
             }
         }
         else {
             var currentFavArrayList: ArrayList<Cocktail> = arrayListOf() // создаем пустой список истории
-            currentFavArrayList.add(INDEX_FOR_NEW_COCKTAIL, cocktail)
+            currentFavArrayList.add(cocktail)
             updateFavList(currentFavArrayList)
         }
     }

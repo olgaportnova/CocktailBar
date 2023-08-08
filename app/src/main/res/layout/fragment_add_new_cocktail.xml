@@ -15,7 +15,6 @@
     tools:context=".presentation.AddNewCocktailFragment">
 
 
-
     <ImageView
         app:layout_constraintStart_toStartOf="@id/mainContainer"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
@@ -23,7 +22,7 @@
         android:layout_width="216dp"
         android:layout_height="204dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/placeholder"
+        android:src="@drawable/ic_main_empty"
 
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,8 +41,14 @@
 
         >
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <EditText
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_input"
             android:id="@+id/si_btnName"
             android:layout_width="match_parent"
@@ -56,32 +61,36 @@
 
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/hintTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginLeft="10dp"
             android:background="@color/white"
             android:gravity="clip_horizontal|center"
-            android:text="Title"
+            android:text="@string/title"
             android:paddingEnd="2dp"
             android:layout_marginTop="2dp"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
+
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/si_btnName"
             android:id="@+id/hint2Title"
+            android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="76dp"
             android:gravity="clip_horizontal|center"
             android:paddingEnd="2dp"
-            android:text="Add title"
+            android:text="@string/add_title"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
@@ -98,8 +107,15 @@
         android:orientation="vertical"
         >
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
         <EditText
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_input"
             android:id="@+id/ed_descrip"
             android:layout_width="match_parent"
@@ -111,33 +127,35 @@
             />
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/hintDescrip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginLeft="10dp"
             android:background="@color/white"
             android:gravity="clip_horizontal|center"
-            android:text="Description"
+            android:text="@string/description"
             android:paddingEnd="2dp"
             android:layout_marginTop="2dp"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_descrip"
+            android:layout_marginTop="4dp"
             android:id="@+id/hint2Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="76dp"
             android:gravity="clip_horizontal|center"
             android:paddingEnd="2dp"
-            android:text="Optional field"
+            android:text="@string/optional_field"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -150,12 +168,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="vertical">
 
-        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
 
         <EditText
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_input"
             android:id="@+id/ed_recipe"
             android:layout_width="match_parent"
@@ -167,33 +191,36 @@
             />
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/hintRecipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginLeft="10dp"
             android:background="@color/white"
             android:gravity="clip_horizontal|center"
-            android:text="Recipe"
+            android:text="@string/recipe"
             android:paddingEnd="2dp"
             android:layout_marginTop="2dp"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_recipe"
+            android:layout_marginTop="4dp"
             android:id="@+id/hint2Recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="76dp"
+
             android:gravity="clip_horizontal|center"
             android:paddingEnd="2dp"
-            android:text="Optional field"
+            android:text="@string/optional_field"
             android:textColor="#79747E"
             android:textSize="12sp" />
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
 
 
@@ -210,8 +237,15 @@
         android:orientation="vertical"
         >
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
         <EditText
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/custom_input"
             android:id="@+id/ed_ingred"
             android:layout_width="match_parent"
@@ -223,55 +257,77 @@
             />
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/hintIngred"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/white"
-            android:gravity="clip_horizontal|center"
-            android:text="Ingredients"
-            android:paddingEnd="2dp"
-            android:layout_marginTop="2dp"
-            android:textColor="#79747E"
-            android:textSize="12sp" />
+            android:text="@string/ingredients"
+            style="@style/hint_add" />
+
 
         <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_ingred"
+            android:layout_marginTop="4dp"
             android:id="@+id/hint2Ingred"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="76dp"
-            android:gravity="clip_horizontal|center"
-            android:paddingEnd="2dp"
-            android:text="Add ingredients one by one"
-            android:textColor="#79747E"
-            android:textSize="12sp" />
+            android:text="@string/add_ingredients_one_by_one"
+            style="@style/hint2_add" />
 
-        <Button
-            android:id="@+id/button_add_ingr"
-            android:layout_width="wrap_content"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:src="@drawable/ic_add_circle"
+            android:id="@+id/buttonAddIngr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/ed_ingred"
+            app:layout_constraintTop_toTopOf="@+id/ed_ingred"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/light_blue"
             android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="17dp"
-            android:background="@drawable/add_ingr_bt"
-            android:backgroundTint="#4B97FF"
-            android:gravity="center"
-            android:text="Add"
-            android:textSize="14sp" />
+            android:layout_width="wrap_content"/>
+
 
         <com.google.android.material.chip.ChipGroup
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hint2Ingred"
             android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="10dp">
 
         </com.google.android.material.chip.ChipGroup>
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterIngred"
+        style="@style/button_details_page" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/light_blue"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSave"
+        app:strokeColor="@color/light_blue"
+        app:strokeWidth="1dp"
+        app:shapeAppearance="@style/ShapeAppearance.App.SmallComponent"
+        />
 
 
 
