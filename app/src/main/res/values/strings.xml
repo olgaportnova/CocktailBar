@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cocktail Bar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    // main page
+    <string name="my_cocktails">My cocktails</string>
+    <string name="hint_add">Add your first \n cocktail here</string>
+</resources>
